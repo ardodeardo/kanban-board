@@ -1,0 +1,34 @@
+.u-color {
+  &-bg {
+    &--green {
+      background-color: #b8ebb0;
+      color: #221c1d;
+    }
+
+    &--orange {
+      background-color: #f0ca81;
+      color: #221c1d;
+    }
+
+    &--red {
+      background-color: #de1d3e;
+      color: #ffff;
+    }
+
+    &--pink {
+      background-color: #de1d6e;
+      color: #ffff;
+    }
+
+    &--purple {
+      background-color: #4f1dde;
+      color: #ffff;
+    }
+  }
+
+  &-text {
+    &--grey {
+      color: #666;
+    }
+  }
+}

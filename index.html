@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board</title>
+    <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"
+    ></script>
+    <script>
+      const todo = {
+        priority: "Low",
+        title: "Create UI design",
+        description: "Create and prepare for UI design",
+        tag: ["Mobile", "Desktop"],
+        date: "Sep 3, 2023",
+        status: "todo",
+      };
+
+      const inprogress = {
+        priority: "Medium",
+        title: "UI templating",
+        description: "Convert design into HTML component",
+        tag: ["Web"],
+        date: "Sep 4, 2023",
+        status: "inprogress",
+      };
+
+      const done = {
+        priority: "High",
+        title: "App integration",
+        description: "Front end and back end app integration",
+        tag: ["Web"],
+        date: "Sep 5, 2023",
+        status: "done",
+      };
+
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("state", () => ({
+          kanbanColumn: ["Todo", "In Progress", "Done"],
+          task: [
+            todo,
+            todo,
+            inprogress,
+            inprogress,
+            inprogress,
+            done,
+            done,
+            done,
+            done,
+          ],
+          handleByStatus: function (status) {
+            const filtered = this.task.filter(
+              (i) =>
+                i.status.toLowerCase() ===
+                status.replaceAll(" ", "").toLowerCase()
+            );
+
+            return filtered;
+          },
+          handlePriority: function (priority) {
+            let bgColor = "u-color-bg--";
+
+            switch (priority) {
+              case "Low":
+                bgColor = bgColor.concat("green");
+                break;
+              case "Medium":
+                bgColor = bgColor.concat("orange");
+                break;
+
+              case "High":
+                bgColor = bgColor.concat("red");
+
+              default:
+                break;
+            }
+
+            return bgColor;
+          },
+          handleTag: function (tag) {
+            let bgColor = "u-color-bg--";
+
+            switch (tag) {
+              case "Mobile":
+                bgColor = bgColor.concat("pink");
+                break;
+
+              case "Web":
+                bgColor = bgColor.concat("purple");
+                break;
+
+              case "Desktop":
+                bgColor = bgColor.concat("purple");
+                break;
+
+              default:
+                break;
+            }
+
+            return bgColor;
+          },
+        }));
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <section class="s-kanban" x-data="state">
+        <div class="u-container">
+          <div class="c-kanban-row">
+            <template x-for="type in kanbanColumn">
+              <div class="c-kanban-column">
+                <div>
+                  <h2 class="c-kanban-column__title" x-text="type"></h2>
+                </div>
+                <div class="c-kanban-column__list">
+                  <template x-for="task in handleByStatus(type)">
+                    <div class="c-card">
+                      <span
+                        class="c-badge c-badge--rounded"
+                        x-text="task.priority"
+                        :class="handlePriority(task.priority)"
+                      >
+                      </span>
+                      <h3 class="c-card__title" x-text="task.title"></h3>
+                      <p
+                        class="c-card__description"
+                        x-text="task.description"
+                      ></p>
+                      <div class="u-row">
+                        <template x-for="tag in task.tag">
+                          <span
+                            class="c-badge"
+                            x-text="tag"
+                            :class="handleTag(tag)"
+                          >
+                          </span>
+                        </template>
+                      </div>
+                      <time
+                        class="c-card__date u-color-text--grey"
+                        x-text="task.date"
+                      ></time>
+                      <div class="u-row">
+                        <img
+                          src="./static/images/avatar.png"
+                          alt="avatar"
+                          width="32"
+                          height="32"
+                          class="c-avatar"
+                        />
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./static/js/main.js" type="module" defer></script>
+  </body>
+</html>
