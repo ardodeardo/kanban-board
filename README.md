@@ -1,7 +1,7 @@
 <div align="center">
   <h1 align="center" style="font-weight:bold">K A N B A N&nbsp;&nbsp;B O A R D</h1>
   <p align="center">
-    A time killer activities
+    A time killer project activity
     <br /><br />
     <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/61144146/265268720-17690453-7fc9-486a-9b9c-0c82f8f5a5c7.jpg">
     <div> Image by <a href="https://www.figma.com/@muazzim">Muazzim MS</a> on <a href="https://www.figma.com/">Figma</a></div>
@@ -15,7 +15,7 @@
 
 Hi there!
 
-This repo is just a time killer activity for me on my weekend. The design was created by [Muazzim MS](https://www.figma.com/community/file/814055731128774975/Kanban-Board).
+This project is just a time killer activity for me on my weekend. The design was created by [Muazzim MS](https://www.figma.com/community/file/814055731128774975/Kanban-Board).
 
 Also checkout my design activity on [figma.com/@ardodeardo](https://www.figma.com/@ardodeardo) :v:
 
