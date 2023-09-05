@@ -1,36 +1,42 @@
-.u-color-bg--green {
-  background-color: #b8ebb0;
-  color: #221c1d;
-}
-.u-color-bg--orange {
-  background-color: #f0ca81;
-  color: #221c1d;
-}
-.u-color-bg--red {
-  background-color: #de1d3e;
-  color: white;
-}
-.u-color-bg--pink {
-  background-color: #de1d6e;
-  color: white;
-}
-.u-color-bg--purple {
-  background-color: #4f1dde;
-  color: white;
-}
-.u-color-text--grey {
-  color: #666;
+:root {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
 }
 
-.u-container {
-  max-width: 1024px;
-  margin: 0 auto;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.u-row {
+h1,
+h2,
+h3,
+p,
+img {
+  margin: 0;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}/*# sourceMappingURL=main.css.map */ground-color: white;
   display: flex;
+  flex-direction: column;
   gap: 8px;
-}/*# sourceMappingURL=main.css.map */: 0;
+  width: auto;
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 8px;
+  transition: box-shadow 0.5s;
+}
+.c-card:hover {
+  cursor: pointer;
+}
+.c-card__title {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
 }
 .c-card__description {
   margin: 0;
@@ -70,7 +76,6 @@
   padding-bottom: 32px;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  min-height: 160px;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -83,4 +88,5 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-height: 160px;
 }/*# sourceMappingURL=main.css.map */

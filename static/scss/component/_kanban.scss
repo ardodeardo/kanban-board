@@ -16,7 +16,6 @@
   padding-bottom: 32px;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  min-height: 160px;
   height: fit-content;
 
   &__title {
@@ -29,5 +28,6 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    min-height: 160px;
   }
 }

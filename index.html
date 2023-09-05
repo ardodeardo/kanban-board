@@ -17,46 +17,50 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"
     ></script>
     <script>
-      const todo = {
-        priority: "Low",
-        title: "Create UI design",
-        description: "Create and prepare for UI design",
-        tag: ["Mobile", "Desktop"],
-        date: "Sep 3, 2023",
-        status: "todo",
-      };
-
-      const inprogress = {
-        priority: "Medium",
-        title: "UI templating",
-        description: "Convert design into HTML component",
-        tag: ["Web"],
-        date: "Sep 4, 2023",
-        status: "inprogress",
-      };
-
-      const done = {
-        priority: "High",
-        title: "App integration",
-        description: "Front end and back end app integration",
-        tag: ["Web"],
-        date: "Sep 5, 2023",
-        status: "done",
-      };
-
       document.addEventListener("alpine:init", () => {
         Alpine.data("state", () => ({
-          kanbanColumn: ["Todo", "In Progress", "Done"],
+          kanbanColumn: [
+            {
+              id: "drop_todo",
+              title: "Todo",
+            },
+            {
+              id: "drop_inprogress",
+              title: "In Progress",
+            },
+            {
+              id: "drop_done",
+              title: "Done",
+            },
+          ],
           task: [
-            todo,
-            todo,
-            inprogress,
-            inprogress,
-            inprogress,
-            done,
-            done,
-            done,
-            done,
+            {
+              id: "7e60a925-3756-4c75-a1b0-d589652c738a",
+              priority: "Low",
+              title: "Create UI design",
+              description: "Create and prepare for UI design",
+              tag: ["Mobile", "Desktop"],
+              date: "Sep 3, 2023",
+              status: "todo",
+            },
+            {
+              id: "a7cb32c6-dde4-4a04-b058-2c95b56b09fb",
+              priority: "Medium",
+              title: "UI templating",
+              description: "Convert design into HTML component",
+              tag: ["Web"],
+              date: "Sep 4, 2023",
+              status: "inprogress",
+            },
+            {
+              id: "15a469bc-b3bc-4311-b00b-86526cea5156",
+              priority: "High",
+              title: "App integration",
+              description: "Front end and back end app integration",
+              tag: ["Web"],
+              date: "Sep 5, 2023",
+              status: "done",
+            },
           ],
           handleByStatus: function (status) {
             const filtered = this.task.filter(
@@ -109,6 +113,9 @@
 
             return bgColor;
           },
+          handleUpdateStatus: function (id) {
+            console.log(id);
+          },
         }));
       });
     </script>
@@ -121,11 +128,11 @@
             <template x-for="type in kanbanColumn">
               <div class="c-kanban-column">
                 <div>
-                  <h2 class="c-kanban-column__title" x-text="type"></h2>
+                  <h2 class="c-kanban-column__title" x-text="type.title"></h2>
                 </div>
-                <div class="c-kanban-column__list">
-                  <template x-for="task in handleByStatus(type)">
-                    <div class="c-card">
+                <div class="c-kanban-column__list js-drop-zone" :id="type.id">
+                  <template x-for="task in handleByStatus(type.title)">
+                    <div class="c-card" :id="task.id" draggable="true">
                       <span
                         class="c-badge c-badge--rounded"
                         x-text="task.priority"

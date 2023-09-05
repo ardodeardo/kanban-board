@@ -1,9 +1,9 @@
 import log from "./common/log.js";
-import sum from "./modules/sum.js";
+import drag from "./modules/drag.js";
 
 function main() {
   log();
-  sum(1, 2);
+  drag();
 }
 
 main();
