@@ -23,7 +23,7 @@
   transition: box-shadow 0.5s;
 }
 .c-card:hover {
-  cursor: pointer;
+  cursor: grab;
 }
 .c-card__title {
   font-size: 12px;

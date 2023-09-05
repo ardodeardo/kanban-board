@@ -22,8 +22,13 @@ export default function drag() {
       column.addEventListener("drop", (e) => {
         e.preventDefault();
 
-        dragged.parentNode.removeChild(dragged);
-        e.target.closest(".c-kanban-column__list").append(dragged);
+        const prevZone = dragged.parentNode;
+        const nextZone = e.target.closest(".c-kanban-column__list");
+
+        if (prevZone.id !== nextZone.id) {
+          prevZone.removeChild(dragged);
+          nextZone.append(dragged);
+        }
       });
     });
   };
